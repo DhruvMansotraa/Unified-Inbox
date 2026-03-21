@@ -1,70 +1,56 @@
-🚀 Unified Inbox — Intelligent Notification Processing System
+🚀 Unified Inbox
 
-A backend-first, event-driven system that aggregates, processes, ranks, and delivers notifications from multiple platforms into a single intelligent feed.
+A backend-first system that aggregates, processes, and prioritizes notifications across platforms using an event-driven architecture.
 
-This is not just an inbox — it is a real-time notification processing pipeline.
+✨ Overview
 
-🧠 Why This Project Exists
+Unified Inbox transforms scattered notifications into a single intelligent feed.
 
-Modern notification systems are:
+Instead of switching between apps, users get:
 
-Fragmented across platforms
-Unstructured
-Prioritization-blind
-
-This project rethinks notifications as:
-
-events flowing through a distributed system
-
-⚙️ System Design Philosophy
-
-Instead of building a UI-heavy extension, this project focuses on:
-
-Event ingestion pipelines
-Asynchronous processing
-Intelligent ranking
-Scalable backend architecture
-🏗️ Architecture
-Extension → API Gateway → Queue → Workers → DB → Delivery
-Core Flow:
-Notifications are captured (extension / API)
-Events are pushed into a queue
-Workers process them asynchronously
-Notifications are enriched, ranked, and stored
-Users receive a prioritized feed
-🔥 Backend Capabilities
-⚡ Event-Driven Architecture
-Queue-based processing (Redis / BullMQ)
-Decoupled ingestion and processing
-Retry + failure handling
-🧠 Notification Intelligence Engine
-Rule-based ranking system
-Priority scoring based on:
-Source
-Content
-Actionability
-🧹 Deduplication System
-Prevents duplicate notifications across platforms
-Hash + similarity-based detection
-📊 Observability (Planned / Optional)
-Job status tracking
-Queue monitoring
-Processing metrics
+A centralized view
+Ranked notifications
+Reduced noise
+⚡ Features
+📥 Multi-Source Aggregation
+Collect notifications from different platforms via extension
+🧠 Priority-Based Ranking
+Automatically ranks notifications based on importance
+⚙️ Asynchronous Processing
+Queue-based architecture for scalable event handling
+🧹 Deduplication Engine
+Prevents duplicate notifications across sources
 🔐 Secure API Layer
-JWT-based authentication
-Rate limiting
-Input validation
-📦 Tech Stack
-
+JWT authentication + rate limiting
+🏗️ Architecture
+Client (Extension)
+        ↓
+API Server
+        ↓
+Queue (Redis / BullMQ)
+        ↓
+Workers (Processing Layer)
+        ↓
+Database (PostgreSQL)
+        ↓
+Client Feed
+🧠 How It Works
+Extension captures notifications
+Data is sent to backend API
+Events are pushed to queue
+Workers process:
+Normalize
+Rank
+Deduplicate
+Notifications are stored and served
+🛠️ Tech Stack
 Backend
-
-Node.js (Express / Fastify)
+Node.js
+Express
 PostgreSQL
 Redis
 BullMQ
-
-Frontend / Extension
-
+Extension
 Chrome Extension (Manifest v3)
 📂 Project Structure
 backend/
@@ -75,43 +61,63 @@ backend/
   ├── models/
 
 extension/
-  ├── content-scripts/
+  ├── content/
   ├── background/
   ├── popup/
-🚀 Key Features
-Unified notification feed across platforms
-Intelligent prioritization system
-Asynchronous processing pipeline
-Real-time or near real-time updates
-Scalable multi-user architecture
-🧪 Example Event
+🚀 Getting Started
+1. Clone the repository
+git clone https://github.com/DhruvMansotraa/Unified-Inbox
+cd Unified-Inbox
+2. Setup Backend
+cd backend
+npm install
+
+Create .env file:
+
+PORT=5000
+DATABASE_URL=your_postgres_url
+REDIS_URL=your_redis_url
+JWT_SECRET=your_secret
+
+Run the server:
+
+npm run dev
+3. Setup Extension
+cd extension
+npm install
+npm run build
+Open Chrome → Extensions
+Enable Developer Mode
+Click "Load unpacked"
+Select /extension/build
+🧪 Example Notification
 {
   "source": "gmail",
-  "type": "email",
   "content": "Interview scheduled",
   "priority": 9,
   "actionRequired": true
 }
-📈 Future Enhancements
-ML-based ranking engine
-Semantic deduplication using embeddings
-WebSocket-based real-time feed
-Analytics dashboard
+🎯 Goals
+Build a scalable backend system
+Demonstrate event-driven architecture
+Handle real-world notification noise
+📈 Future Improvements
+Real-time updates (WebSockets)
+ML-based prioritization
+Notification analytics dashboard
 Multi-device sync
-⚠️ Engineering Trade-offs
-DOM scraping vs API integrations
-Queue complexity vs system simplicity
-Real-time updates vs cost
-🎯 What This Project Demonstrates
+⚠️ Limitations
+Some platforms restrict data access
+DOM scraping may break on UI updates
+📄 License
 
-This project is designed to showcase:
+MIT
 
-Event-driven system design
-Backend scalability patterns
-Asynchronous job processing
-Data modeling & normalization
-Real-world system trade-offs
-❗ Important Note
+💬 Straight Talk
 
-This project focuses on backend architecture and system design,
-not just UI or extension features.
+This version is:
+
+Cleaner
+Structured like a product
+Easy to scan
+Backend-focused
