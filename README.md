@@ -19,7 +19,7 @@ Automatically ranks notifications based on importance
 ⚙️ Asynchronous Processing
 Queue-based architecture for scalable event handling
 🧹 Deduplication Engine
-Prevents duplicate notifications across sources
+Prevents duplicate notifications across sources.
 🔐 Secure API Layer
 JWT authentication + rate limiting
 🏗️ Architecture
